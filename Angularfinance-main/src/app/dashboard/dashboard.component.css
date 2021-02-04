@@ -1,0 +1,21 @@
+
+  .font-type{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    font-size: medium;
+}
+
+.card{
+    margin: auto;
+    float: none;
+}
+
+.col-sm{
+    padding-left: 70px;
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+    font-size: medium;
+}
+
+.vertical-align{
+    display: flex;
+    align-items: center;
+}

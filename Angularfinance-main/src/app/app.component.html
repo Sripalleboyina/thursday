@@ -1,0 +1,44 @@
+<div>
+    <div>
+        <div class="topnav">
+         <a *ngIf="this.registerService.isUserLoggedIn==true" routerLink="/Index"> <img src="./../assets/images/h_4-removebg-preview.png"style="height:50px;width:80px;margin-top:30px;margin-left:20px"></a>
+            <table id="nav_table">
+              <tr>
+                <th><a *ngIf="this.registerService.isUserLoggedIn==true" routerLink="/Dashboard" ><span style="color:whitesmoke;font-family:Roboto,HelveticaNeue-Light,sans-serif;font-size: 29px;">Profile</span></a></th>
+                <th><a *ngIf="this.registerService.isUserLoggedIn==false" routerLink="/Register"><span style="color:whitesmoke;font-family:Roboto,HelveticaNeue-Light,sans-serif;font-size: 28px;">Register</span></a></th>
+              <th><a *ngIf="this.registerService.isUserLoggedIn==false" routerLink="/Login"><span style="color:whitesmoke;font-family:Roboto,HelveticaNeue-Light,sans-serif;font-size: 28px;">Login</span></a></th>
+              <th><a *ngIf="this.registerService.isUserLoggedIn==true" (click)="clkLogOut()"><span style="color:whitesmoke;font-family:Roboto,HelveticaNeue-Light,sans-serif;font-size: 28px;">Logout</span></a></th>
+            </tr>
+          </table>
+          </div>
+    </div>
+    <router-outlet></router-outlet>
+    <footer>
+      <div style="margin-top: 20px;" class="card">
+        <div class="card" style="background-color:#33475b;height: 120px;color: white;">
+          <div style="text-align: center;font-family: Roboto,HelveticaNeue-Light,sans-serif;padding-top: 20px;"><strong> ©
+              2009 - 2021 LFI. All Rights Reserved. LFI® is a registered
+              trademark.</strong></div><br>
+              
+          <div class="icons" >
+            <a href="#" style="color:white;"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>&nbsp;<b>|</b>&nbsp;
+            <a href="#" style="color:white;"><i class="fa fa-instagram" aria-hidden="true"></i></a>&nbsp;<b>|</b>&nbsp;
+            <a href="#" style="color:white;"><i class="fa fa-google" aria-hidden="true"></i></a>&nbsp;<b>|</b>&nbsp;
+            <a href="#" style="color:white;"><i class="fa fa-telegram" aria-hidden="true"></i></a>&nbsp;<b>|</b>&nbsp;
+            <a href="#" style="color:white;"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+</div>
+    <style>
+        .card-body{
+            text-align: center;
+        }
+        .top{
+            padding-top: 150px;
+        }
+        button{
+            width: fit-content;
+        }
+    </style>

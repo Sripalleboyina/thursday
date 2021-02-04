@@ -1,0 +1,463 @@
+<div class="container" style="margin-bottom: 30px;margin-top: 30px;">
+  <div class="row">
+    <div class="col-md-6"  >
+       <div class="card ">
+          <div class="card-header" >  
+           <div class="text-center">
+            
+            <i class="fa fa-user-circle-o" style="font-size:40px"></i>
+            <div class="font-type"> 
+                DASHBOARD
+            </div>
+           </div>
+        </div>
+             <div class="card-body">
+               <div class="font-type">
+                 <!-- Card Number:<span style="float:right">{{dashboard.EMIcard_number}}</span><br/>
+                 Name:<span style="float:right">{{dashboard.customer_name}}</span><br/>
+                 Valid till: <span style="float: right;">{{dashboard.EMIcard_expiry}}</span><br/>
+                 CARD TYPE: <span style="float: right;">{{dashboard.EMIcardtype_name}}</span> -->
+                 <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Card Number:
+                    <span class="label ">{{dashboard.EMIcard_number}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center ">
+                      Name:
+                      <span class="label ">{{dashboard.customer_name}}</span>
+                    </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center ">
+                    Valid till:
+                    <span class="label ">{{dashboard.EMIcard_expiry}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center ">
+                    Status:
+                    <span class="label ">{{dashboard.EMIcardtype_name}}</span>
+                  </li>
+                </ul>
+               </div>
+             </div>
+       </div>
+    </div>
+    <div class="col-md-6">
+     <div class="card">
+           <div class="card-header" style="text-align: center;" >
+              <span >
+                <i style="font-size:40px"class="fa fa-credit-card"></i>
+               </span>
+               <div class="font-type" >
+               CREDIT CARD 
+               </div>
+           </div>
+         <div class="card-body">
+            <div class="font-type">
+             <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Total credit
+                  <span class="label label-primary">{{dashboard.total_limit}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center ">
+                    Used credit
+                    <span class="label label-danger">{{dashboard.used_credit}}</span>
+                  </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center ">
+                  Remaining credit
+                  <span class="label label-success">{{dashboard.remaining_credit}}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center ">
+                  Card Type:
+                  <span class="label ">{{dashboard.EMIcardtype_name}}</span>
+                </li>
+              </ul>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12" >
+         <div class="card ">
+            <div class="card-header" >  
+             <div class="text-center">
+              <span class="font-type"> 
+                  PRODUCTS PURCHASED
+              </span>
+              <span><i class="fa fa-shopping-cart" style="font-size:24px"></i></span>
+             </div>
+          </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container" style="margin-bottom: 30px;">
+    <div class="row" *ngFor="let p of dashboard.products">
+      <div class="col-md-12" >
+         <div class="card ">
+            <div class="card-header" >  
+             <div class="text-center"> 
+              <div class="font-type"> 
+                  {{p.Name}}
+              </div>
+             </div>
+            </div>
+               <div class="card-body">
+                 <div class="row vertical-align">
+                   <div class="col-md-4">
+                    <img class="image-responsive" width="80%" height="80%" [src]="p.Image"  />
+                   </div>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-6">
+                            <div class="font-type">
+                            Details
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="font-type">
+                            : <span [innerHTML]="p.Details"></span> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="font-type"> 
+                            Cost
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="font-type"> 
+                            : {{p.Cost | currency:'INR'}} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="font-type"> 
+                            Paid
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="font-type"> 
+                            : {{p.PaidAmount | currency:'INR'}} 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-6">
+                            <div class="font-type"> 
+                            Balance
+                            </div> 
+                        </div>
+                        <div class="col-6"> 
+                            <div class="font-type">  
+                            :  {{p.BalanceAmount | currency:'INR'}} 
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="row"> 
+                      <div class="col-6">
+                          <div class="font-type"> 
+                          Pay Now
+                          </div> 
+                      </div>
+                      <div class="col-6"> 
+                          <div class="font-type">  
+                          <button [disabled]="p.PaymentStatus" (click)="OnClickPayNow(p.OrderId)">PayNow</button>
+                          </div> 
+                      </div>
+                  </div>
+                   </div>
+                 </div>
+               </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" >
+         <div class="card ">
+            <div class="card-header" >  
+             <div class="text-center">
+              <span class="font-type"> 
+                  RECENT TRANSACTIONS
+              </span>
+              <span><i class="fa fa-shopping-cart" style="font-size:24px"></i></span>
+             </div>
+          </div>
+         </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container">
+<div class="row">
+<div class="col-md-12">   
+  <div class="card">
+      <div class="card-header">
+          <div class="row">
+              <div class="col-sm">
+                  PRODUCT
+              </div>
+              <div style="padding-left: 100px;" class="col-sm">
+                  DATE
+              </div>
+              <div style="padding-left: 50px;" class="col-sm">
+                  AMOUNT PAID
+              </div>
+          </div>
+      </div>
+      <div class="card-body">
+          <span >
+              <div class="row">
+                  <div class="col-sm">
+                      item.Name
+                  </div>
+                  <div class="col-sm">
+                      item.Date | date:'MMM d, y'
+                  </div>
+                  <div class="col-sm">
+                      item.Amount_Paid | currency:'INR'
+                  </div>
+              </div>
+          </span>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+  <br> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ <!-- <div *ngIf="status==false">Account under process</div>
+ <div *ngIf="status==true">
+ <div class="container-fluid" style="margin-bottom: 30px;margin-top: 30px;">
+    <div class="row">
+      <div class="col-md-4 mx-auto"  >
+         <div class="card ">
+            <div class="card-header" >  
+             <div class="text-center">
+              
+              <i class="fa fa-user-circle-o" style="font-size:40px"></i>
+              <div class="font-type"> 
+                  DASHBOARD 
+              </div>
+             </div>
+          </div>
+               <div class="card-body">
+                 <div class="font-type">
+                   Card number: {{ dashboard.EMIcard_number}}<br/>
+                   Name: {{ dashboard.EMIcardtype_name}}<br/>
+                   Valid till: {{ dashboard.EMIcard_expiry}}<br/>
+                   CARD TYPE: {{ dashboard.EMIcardtype_name}}
+                 </div>
+               </div>
+              <div class="card-footer">
+                <div class="font-type">  
+                 Status
+                </div>
+              </div>
+         </div>
+      </div>
+      <div class="col-md-4 mx-auto">
+       <div class="card">
+             <div class="card-header" style="text-align: center;" >
+                <span >
+                  <i style="font-size:40px"class="fa fa-credit-card"></i>
+                 </span>
+                 <div class="font-type" >
+                 CREDIT CARD 
+                 </div>
+             </div>
+           <div class="card-body">
+              <div class="font-type">
+               <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Total credit
+                    <span class="label label-primary">{{dashboard.total_limit}}</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center ">
+                      Used credit
+                      <span class="label label-danger">{{dashboard.used_credit}}</span>
+                    </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center ">
+                    Remaining credit
+                    <span class="label label-success">{{dashboard.remaining_credit}}</span>
+                  </li>
+                </ul>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 mx-auto" >
+           <div class="card ">
+              <div class="card-header" >  
+               <div class="text-center">
+                <span class="font-type"> 
+                    PRODUCTS PURCHASED
+                </span>
+                <span><i class="fa fa-shopping-cart" style="font-size:24px"></i></span>
+               </div>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  <div class="container-fluid" style="margin-bottom: 30px;">
+      <div class="row">
+        <div class="col-md-10 mx-auto" >
+           <div class="card ">
+              <div class="card-header" >  
+               <div class="text-center"> 
+                <div class="font-type"> 
+                    p.Name
+                </div>
+               </div>
+              </div>
+                 <div class="card-body">
+                   <div class="row vertical-align">
+                     <div class="col-md-4">
+                      
+                     </div>
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-6">
+                              <div class="font-type">
+                              Details
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="font-type">
+                              : p.Details
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="font-type"> 
+                              Cost
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="font-type"> 
+                              : p.Cost | currency:'INR'
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-6">
+                              <div class="font-type"> 
+                              Paid
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="font-type"> 
+                              : p.Amount_Paid | currency:'INR'
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row"> 
+                          <div class="col-6">
+                              <div class="font-type"> 
+                              Balance
+                              </div> 
+                          </div>
+                          <div class="col-6"> 
+                              <div class="font-type">  
+                              :  p.Balance | currency:'INR'
+                              </div> 
+                          </div>
+                      </div>
+                     </div>
+                   </div>
+                 </div>
+                <div class="card-footer">
+                  <div class="font-type">  
+                   Status
+                  </div>
+                </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10 mx-auto" >
+           <div class="card ">
+              <div class="card-header" >  
+               <div class="text-center">
+                <span class="font-type"> 
+                    RECENT TRANSACTIONS
+                </span>
+                <span><i class="fa fa-shopping-cart" style="font-size:24px"></i></span>
+               </div>
+            </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  <div class="container-fluid">
+  <div class="row">
+  <div class="col-md-10 mx-auto">   
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-sm">
+                    PRODUCT
+                </div>
+                <div style="padding-left: 100px;" class="col-sm">
+                    DATE
+                </div>
+                <div style="padding-left: 50px;" class="col-sm">
+                    AMOUNT PAID
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <span >
+                <div class="row">
+                    <div class="col-sm">
+                        item.Name
+                    </div>
+                    <div class="col-sm">
+                        item.Date | date:'MMM d, y'
+                    </div>
+                    <div class="col-sm">
+                        item.Amount_Paid | currency:'INR'
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+  </div>
+  </div>
+  </div>
+ </div> -->
